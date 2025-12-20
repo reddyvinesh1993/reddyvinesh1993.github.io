@@ -1,1038 +1,824 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vinesh Reddy Borra | Sr. Data Engineer</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            fontFamily: {
-              heading: ["Poppins", "ui-sans-serif", "system-ui"],
-              body: ["Inter", "ui-sans-serif", "system-ui"],
-            },
-            colors: {
-              primary: {
-                light: "#2563EB",
-                dark: "#60A5FA",
-              },
-              accent: "#F59E0B",
-            },
-            boxShadow: {
-              card: "0 20px 45px -15px rgba(15, 23, 42, 0.35)",
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      .skill-chip {
-        @apply bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200 px-2.5 py-1 rounded-full text-xs font-medium transition;
-      }
-    </style>
-    <script>
-      const applyTheme = (mode) => {
-        const root = document.documentElement;
-        if (mode === "dark") {
-          root.classList.add("dark");
-        } else {
-          root.classList.remove("dark");
-        }
-      };
-      const getPreferredTheme = () => {
-        const stored = localStorage.getItem("theme");
-        if (stored) return stored;
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      };
-      const toggleTheme = () => {
-        const newTheme = document.documentElement.classList.contains("dark")
-          ? "light"
-          : "dark";
-        applyTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-      };
-      document.addEventListener("DOMContentLoaded", () =>
-        applyTheme(getPreferredTheme())
-      );
-    </script>
-  </head>
-  <body
-    class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 font-body antialiased"
-  >
-    <div class="relative overflow-hidden">
-      <div
-        class="absolute inset-x-0 top-0 -z-10 h-[480px] bg-gradient-to-r from-primary-light/20 via-indigo-400/10 to-cyan-400/20 dark:from-primary-dark/10 dark:via-blue-400/10 dark:to-cyan-400/10 blur-3xl"
-      ></div>
-    </div>
-
-    <header
-      class="max-w-6xl mx-auto px-6 pt-10 pb-6 flex flex-wrap items-center justify-between gap-4"
-    >
-      <div class="space-y-1">
-        <p
-          class="text-sm uppercase tracking-[0.35em] text-primary-light dark:text-primary-dark"
-        >
-          Portfolio
-        </p>
-        <h1
-          class="text-3xl md:text-4xl font-heading font-semibold text-slate-900 dark:text-white"
-        >
-          Vinesh Reddy
-        </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-300">
-          Senior Data Engineer · Dallas, TX · 9+ years in multi-cloud data
-          solutions
-        </p>
-      </div>
-      <div class="flex items-center gap-3">
-        <button
-          onclick="toggleTheme()"
-          class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-primary-light hover:text-primary-light dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-primary-dark dark:hover:text-primary-dark"
-        >
-          <span class="inline-block h-4 w-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="hidden dark:block"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364-6.364-1.06 1.06M7.696 16.304l-1.06 1.06m0-12.728 1.06 1.06m8.608 8.608 1.06 1.06M12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Z"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="block dark:hidden"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M21 12.79A9 9 0 1 1 11.21 3a7.5 7.5 0 0 0 9.79 9.79Z"
-              />
-            </svg>
-          </span>
-          <span>Toggle Theme</span>
-        </button>
-        <a
-          href="mailto:reddyvinesh1993@gmail.com"
-          class="inline-flex h-11 items-center rounded-full bg-primary-light px-5 text-sm font-semibold text-white shadow-lg shadow-primary-light/40 transition hover:bg-indigo-500 dark:bg-primary-dark dark:hover:bg-blue-400"
-        >
-          Hire Me
-        </a>
-      </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 pb-24 space-y-16">
-      <section class="grid gap-8 lg:grid-cols-[2fr,1fr] items-start">
-        <article
-          class="rounded-3xl border border-slate-200/70 bg-white/90 backdrop-blur-lg p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800/60 dark:bg-slate-900/70 dark:shadow-card"
-        >
-          <h2
-            class="text-2xl font-heading font-semibold text-slate-900 dark:text-white mb-6"
-          >
-            Professional Summary
-          </h2>
-          <div class="prose prose-slate dark:prose-invert max-w-none">
-            <p>
-              Senior Data Engineer with 9+ years architecting and optimizing
-              cloud-scale data platforms across Azure, AWS, and Google Cloud.
-              Expert in building resilient ETL and streaming pipelines with
-              Apache Spark, Kafka, Talend, Informatica, and modern orchestration
-              frameworks. Skilled in crafting performant data warehouses (Amazon
-              Redshift, BigQuery, Azure Synapse, Snowflake) and dimensional
-              models that enable high-impact analytics.
-            </p>
-            <p>
-              Versed in Java, Python, SQL, and PowerShell to automate end-to-end
-              data workflows, including real-time ingestion via Kafka, Pub/Sub,
-              and Kinesis. Adept at cross-cloud integration of AWS Glue, Azure
-              Data Factory, and Google Cloud Composer while enforcing governance
-              with AWS IAM, Azure Purview, and OAuth 2.0.
-            </p>
-            <p>
-              Recognized for improving pipeline performance by up to 40%,
-              designing petabyte-scale ecosystems, and enabling ML-ready data
-              products integrated with Amazon SageMaker, Azure Machine Learning,
-              and TensorFlow. Collaborative leader who closes the gap between
-              data engineering, analytics, and business stakeholders.
-            </p>
-          </div>
-        </article>
-        <aside class="space-y-4">
-          <div
-            class="rounded-3xl border border-primary-light/20 bg-white/90 p-6 shadow-lg shadow-primary-light/15 transition hover:-translate-y-1 dark:border-primary-dark/20 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <p
-              class="text-sm uppercase tracking-[0.35em] text-primary-light dark:text-primary-dark mb-3"
-            >
-              Contact
-            </p>
-            <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-              <p class="font-semibold text-slate-800 dark:text-white">
-                reddyvinesh1993@gmail.com
-              </p>
-              <p>+1 (214) 310-0063</p>
-              <a
-                class="text-primary-light hover:underline dark:text-primary-dark"
-                href="https://www.linkedin.com/in/rvineshreddy"
-                target="_blank"
-                rel="noreferrer"
-                >linkedin.com/in/rvineshreddy</a
-              >
-            </div>
-          </div>
-          <div
-            class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <p
-              class="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-3"
-            >
-              Core Outcomes
-            </p>
-            <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-200">
-              <li class="flex items-start gap-2">
-                <span
-                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"
-                ></span>
-                <span
-                  >Reduced pipeline runtimes up to 40% through Spark
-                  optimization and resource tuning.</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <span
-                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"
-                ></span>
-                <span
-                  >Delivered real-time analytics with event-driven architectures
-                  leveraging Kinesis and Kafka.</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <span
-                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"
-                ></span>
-                <span
-                  >Enabled ML-ready datasets powering predictive models across
-                  cloud ML platforms.</span
-                >
-              </li>
-            </ul>
-          </div>
-        </aside>
-      </section>
-
-      <section class="space-y-10">
-        <div class="flex items-center gap-3">
-          <span
-            class="h-10 w-10 rounded-2xl bg-primary-light/15 text-primary-light flex items-center justify-center dark:bg-primary-dark/15 dark:text-primary-dark"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M12 6v12m6-6H6"
-              />
-            </svg>
-          </span>
-          <h2
-            class="text-2xl font-heading font-semibold text-slate-900 dark:text-white"
-          >
-            Highlighted Capabilities
-          </h2>
-        </div>
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <div
-            class="group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
-          >
-            <h3
-              class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white"
-            >
-              <span
-                class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M3 7.5h18m-18 9h18M4.5 4.5l1.125 15m12.75-15 1.125 15M9 4.5v15m6-15v15"
-                  />
-                </svg>
-              </span>
-              Multi-Cloud Architecture
-            </h3>
-            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
-              Hands-on delivery across Azure, AWS, and GCP with IaC, CI/CD, and
-              cost-optimized deployments tailored to enterprise governance.
-            </p>
-          </div>
-          <div
-            class="group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
-          >
-            <h3
-              class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white"
-            >
-              <span
-                class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M12 4.5v15m0 0 6-6m-6 6-6-6"
-                  />
-                </svg>
-              </span>
-              Streaming & Real-Time Analytics
-            </h3>
-            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
-              Event-driven pipelines with Kafka, Kinesis, Pub/Sub enabling
-              sub-minute insights, anomaly detection, and operational
-              dashboards.
-            </p>
-          </div>
-          <div
-            class="group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
-          >
-            <h3
-              class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white"
-            >
-              <span
-                class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M15 16.5V18a3 3 0 0 1-6 0v-1.5m0-9V6a3 3 0 0 1 6 0v1.5m-9 3h12"
-                  />
-                </svg>
-              </span>
-              Data Governance & Security
-            </h3>
-            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
-              Compliant frameworks combining Lake Formation, Purview, IAM, and
-              Key Vault to uphold data privacy, lineage, and least-privilege
-              access.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="space-y-8" id="skills">
-        <div class="flex items-center gap-3">
-          <span
-            class="h-10 w-10 rounded-2xl bg-primary-light/15 text-primary-light flex items-center justify-center dark:bg-primary-dark/15 dark:text-primary-dark"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M12 6v12m6-6H6"
-              />
-            </svg>
-          </span>
-          <h2
-            class="text-2xl font-heading font-semibold text-slate-900 dark:text-white"
-          >
-            Technical Toolkit
-          </h2>
-        </div>
-        <div class="grid gap-6 lg:grid-cols-2">
-          <div
-            class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <div class="flex items-center gap-4">
-              <span
-                class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M4.5 9.75V7.5a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v2.25M12 3v18m-7.5-5.25V16.5a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v.75"
-                  />
-                </svg>
-              </span>
-              <div>
-                <h3
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
-                >
-                  Cloud Platforms
-                </h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">
-                  Azure, AWS, Google Cloud
-                </p>
-              </div>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="skill-chip">ADLS</span>
-              <span class="skill-chip">Synapse Analytics</span>
-              <span class="skill-chip">Databricks</span>
-              <span class="skill-chip">Cosmos DB</span>
-              <span class="skill-chip">ADF</span>
-              <span class="skill-chip">Purview</span>
-              <span class="skill-chip">AWS Glue</span>
-              <span class="skill-chip">Lambda</span>
-              <span class="skill-chip">Redshift</span>
-              <span class="skill-chip">DynamoDB</span>
-              <span class="skill-chip">S3</span>
-              <span class="skill-chip">Athena</span>
-              <span class="skill-chip">CloudFormation</span>
-              <span class="skill-chip">Kinesis</span>
-              <span class="skill-chip">EMR</span>
-              <span class="skill-chip">BigQuery</span>
-              <span class="skill-chip">Cloud Functions</span>
-              <span class="skill-chip">Cloud Dataflow</span>
-              <span class="skill-chip">Cloud Pub/Sub</span>
-            </div>
-          </div>
-
-          <div
-            class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <div class="flex items-center gap-4">
-              <span
-                class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5"
-                  />
-                </svg>
-              </span>
-              <div>
-                <h3
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
-                >
-                  Programming & Analytics
-                </h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">
-                  Languages, Libraries, Statistics
-                </p>
-              </div>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="skill-chip">Java</span>
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">PowerShell</span>
-              <span class="skill-chip">SQL</span>
-              <span class="skill-chip">Pandas</span>
-              <span class="skill-chip">NumPy</span>
-              <span class="skill-chip">TensorFlow</span>
-              <span class="skill-chip">Scikit-Learn</span>
-              <span class="skill-chip">Seaborn</span>
-              <span class="skill-chip">Regression Analysis</span>
-              <span class="skill-chip">Hypothesis Testing</span>
-            </div>
-          </div>
-
-          <div
-            class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <div class="flex items-center gap-4">
-              <span
-                class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M9 12h6m-6 4h6m-7.5 4.5h9A1.5 1.5 0 0 0 18 19.5v-15A1.5 1.5 0 0 0 16.5 3h-9A1.5 1.5 0 0 0 6 4.5v15A1.5 1.5 0 0 0 7.5 21.5Z"
-                  />
-                </svg>
-              </span>
-              <div>
-                <h3
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
-                >
-                  Data Ecosystems
-                </h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">
-                  Databases, ETL, Warehousing
-                </p>
-              </div>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="skill-chip">SQL Server</span>
-              <span class="skill-chip">MySQL</span>
-              <span class="skill-chip">PostgreSQL</span>
-              <span class="skill-chip">MongoDB</span>
-              <span class="skill-chip">CosmosDB</span>
-              <span class="skill-chip">DynamoDB</span>
-              <span class="skill-chip">Kafka</span>
-              <span class="skill-chip">Airflow</span>
-              <span class="skill-chip">Beam</span>
-              <span class="skill-chip">Hadoop</span>
-              <span class="skill-chip">Talend</span>
-              <span class="skill-chip">Informatica</span>
-              <span class="skill-chip">Hive</span>
-              <span class="skill-chip">Pig</span>
-              <span class="skill-chip">Google BigQuery</span>
-              <span class="skill-chip">Amazon Redshift</span>
-              <span class="skill-chip">Azure Synapse</span>
-              <span class="skill-chip">Snowflake</span>
-              <span class="skill-chip">Star Schema</span>
-              <span class="skill-chip">Snowflake Schema</span>
-            </div>
-          </div>
-
-          <div
-            class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
-          >
-            <div class="flex items-center gap-4">
-              <span
-                class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M4.5 8.25h15m-13.5 0a1.5 1.5 0 0 1-1.5-1.5V5.25A1.5 1.5 0 0 1 6 3.75h12a1.5 1.5 0 0 1 1.5 1.5v1.5a1.5 1.5 0 0 1-1.5 1.5m-13.5 0h13.5m-13.5 0v9a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5v-9"
-                  />
-                </svg>
-              </span>
-              <div>
-                <h3
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
-                >
-                  Delivery & Operations
-                </h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">
-                  DevOps, Monitoring, Collaboration
-                </p>
-              </div>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="skill-chip">Agile</span>
-              <span class="skill-chip">Scrum</span>
-              <span class="skill-chip">Kanban</span>
-              <span class="skill-chip">Git</span>
-              <span class="skill-chip">GitHub</span>
-              <span class="skill-chip">BitBucket</span>
-              <span class="skill-chip">JIRA</span>
-              <span class="skill-chip">Confluence</span>
-              <span class="skill-chip">Azure DevOps</span>
-              <span class="skill-chip">Jenkins</span>
-              <span class="skill-chip">Terraform</span>
-              <span class="skill-chip">Docker</span>
-              <span class="skill-chip">Kubernetes</span>
-              <span class="skill-chip">AWS CloudWatch</span>
-              <span class="skill-chip">AWS X-Ray</span>
-              <span class="skill-chip">ELK Stack</span>
-              <span class="skill-chip">Azure Key Vault</span>
-              <span class="skill-chip">AWS IAM</span>
-              <span class="skill-chip">OAuth 2.0</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="space-y-10" id="experience">
-        <div class="flex items-center gap-3">
-          <span
-            class="h-10 w-10 rounded-2xl bg-primary-light/15 text-primary-light flex items-center justify-center dark:bg-primary-dark/15 dark:text-primary-dark"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M5.25 7.5h13.5M6 12h12m-10.5 4.5h9"
-              />
-            </svg>
-          </span>
-          <h2
-            class="text-2xl font-heading font-semibold text-slate-900 dark:text-white"
-          >
-            Experience
-          </h2>
-        </div>
-        <div class="grid gap-8">
-          <article
-            class="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
-          >
-            <header class="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <h3
-                  class="text-xl font-semibold text-slate-900 dark:text-white"
-                >
-                  American Express · Sr. Data Engineer
-                </h3>
-                <p class="text-sm text-primary-light dark:text-primary-dark">
-                  January 2024 – Present · Texas, USA
-                </p>
-              </div>
-              <div
-                class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-              >
-                AWS Ecosystem
-              </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vinesh Reddy Borra | Portfolio</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            heading: ["Poppins", "ui-sans-serif", "system-ui"],
+                            body: ["Inter", "ui-sans-serif", "system-ui"]
+                        },
+                        colors: {
+                            primary: {
+                                light: "#2563EB",
+                                dark: "#60A5FA"
+                            },
+                            accent: "#F59E0B"
+                        },
+                        boxShadow: {
+                            card: "0 24px 48px -22px rgba(15, 23, 42, 0.45)"
+                        }
+                    }
+                }
+            };
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .skill-chip {
+                @apply bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200 px-2.5 py-1 rounded-full text-xs font-medium transition;
+            }
+            .card-animate {
+                @apply transition duration-500 ease-out;
+                transform-origin: center;
+            }
+            .card-animate:hover {
+                @apply -translate-y-3 scale-[1.01];
+            }
+            .reveal-init {
+                opacity: 0;
+                transform: translate3d(0, 48px, 0);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            .reveal-active {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+            .parallax-layer {
+                pointer-events: none;
+                position: absolute;
+                inset: 0;
+                will-change: transform, filter;
+                transition: transform 0.1s linear, filter 0.25s ease-out;
+            }
+            .scroll-indicator span {
+                animation: bounce 2s infinite;
+            }
+            @keyframes bounce {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-6px);
+                }
+            }
+            .typing-text {
+                font-weight: 600;
+            }
+            .typing-cursor {
+                display: inline-block;
+                width: 2px;
+                height: 1.6rem;
+                margin-left: 6px;
+                background-color: currentColor;
+                animation: blink 0.8s steps(1) infinite;
+                vertical-align: text-bottom;
+            }
+            @keyframes blink {
+                0%, 50% {
+                    opacity: 1;
+                }
+                50.01%, 100% {
+                    opacity: 0;
+                }
+            }
+        </style>
+        <script>
+            const applyTheme = (mode) => {
+                const root = document.documentElement;
+                if (mode === "dark") {
+                    root.classList.add("dark");
+                } else {
+                    root.classList.remove("dark");
+                }
+            };
+            const getPreferredTheme = () => {
+                const stored = localStorage.getItem("theme");
+                if (stored) {
+                    return stored;
+                }
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            };
+            const toggleTheme = () => {
+                const newTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
+                applyTheme(newTheme);
+                localStorage.setItem("theme", newTheme);
+            };
+            document.addEventListener("DOMContentLoaded", () => applyTheme(getPreferredTheme()));
+        </script>
+    </head>
+    <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 font-body antialiased">
+        <div class="relative min-h-screen overflow-hidden">
+            <div
+                class="parallax-layer -z-20 bg-gradient-to-br from-primary-light/25 via-indigo-400/10 to-cyan-300/25 dark:from-primary-dark/10 dark:via-blue-500/10 dark:to-cyan-400/15"
+                data-parallax="0.12"
+            ></div>
+            <div
+                class="parallax-layer -z-10 bg-[radial-gradient(circle_at_top,_rgba(96,_165,_250,_0.18),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(96,_165,_250,_0.12),_transparent_55%)]"
+                data-parallax="0.06"
+            ></div>
+            <header class="relative z-10 flex min-h-screen flex-col">
+                <div class="w-full px-6 pt-6">
+                    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <p class="text-xs uppercase tracking-[0.4em] text-primary-light dark:text-primary-dark">
+                                Portfolio
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button
+                                onclick="toggleTheme()"
+                                class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 shadow-sm transition hover:border-primary-light hover:text-primary-light dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-primary-dark dark:hover:text-primary-dark"
+                            >
+                                <span class="inline-block h-4 w-4">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="hidden dark:block"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364-6.364-1.06 1.06M7.696 16.304l-1.06 1.06m0-12.728 1.06 1.06m8.608 8.608 1.06 1.06M12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Z"
+                                        />
+                                    </svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="block dark:hidden"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M21 12.79A9 9 0 1 1 11.21 3a7.5 7.5 0 0 0 9.79 9.79Z"
+                                        />
+                                    </svg>
+                                </span>
+                                <span>Theme</span>
+                            </button>
+                            <a
+                                href="mailto:reddyvinesh1993@gmail.com"
+                                class="inline-flex h-11 items-center rounded-full bg-primary-light px-6 text-sm font-semibold text-white shadow-lg shadow-primary-light/40 transition hover:bg-indigo-500 dark:bg-primary-dark dark:hover:bg-blue-400"
+                            >
+                                Hire Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-1 items-center justify-center px-6 pb-24 sm:pb-32">
+                    <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+                        <h1 class="font-heading text-6xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-7xl">
+                            Vinesh Reddy Borra
+                        </h1>
+                        <p class="mt-8 text-2xl text-slate-600 dark:text-slate-300 sm:text-3xl">
+                            <span id="typing-text" class="typing-text text-primary-light dark:text-primary-dark"></span>
+                            <span id="typing-cursor" class="typing-cursor"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="pb-12 text-center">
+                    <a
+                        href="#content-start"
+                        class="scroll-indicator inline-flex flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400"
+                    >
+                        Explore
+                        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300/60 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25 12 15.75l-7.5-7.5" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
             </header>
-            <ul
-              class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200"
-            >
-              <li>
-                Architected Amazon RDS and DynamoDB deployments supporting
-                high-availability transactional and analytical workloads.
-              </li>
-              <li>
-                Leveraged Apache Spark and PySpark for distributed data
-                processing and real-time analytics on petabyte-scale datasets.
-              </li>
-              <li>
-                Engineered AWS Glue ETL pipelines, automated orchestration with
-                AWS Data Pipeline, and tuned Spark SQL for cost-efficient
-                performance.
-              </li>
-              <li>
-                Implemented streaming analytics via AWS Kinesis and built
-                event-driven workflows with Lambda and Step Functions.
-              </li>
-              <li>
-                Optimized Amazon Redshift warehousing through indexing,
-                partitioning, compression, and workload management.
-              </li>
-              <li>
-                Delivered governance with AWS Lake Formation, IAM policy design,
-                and cross-platform security compliance.
-              </li>
-              <li>
-                Produced Amazon QuickSight dashboards for business stakeholders
-                and managed EMR clusters for large-scale analytics.
-              </li>
-              <li>
-                Enabled ML pipelines using Amazon SageMaker and enforced
-                observability with AWS CloudWatch and X-Ray.
-              </li>
-              <li>
-                Automated infrastructure provisioning via AWS CloudFormation and
-                CDK, integrating CI/CD with Jenkins.
-              </li>
-              <li>
-                Led cloud migration initiatives from on-premises sources to AWS,
-                ensuring secure data transfer and minimal downtime.
-              </li>
-            </ul>
-            <p
-              class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-            >
-              Environment
-            </p>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              AWS · Amazon RDS · DynamoDB · Apache Spark · PySpark · AWS Glue ·
-              AWS Kinesis · Jenkins · AWS Data Pipeline · Amazon Redshift ·
-              Amazon QuickSight · AWS Lake Formation · Amazon EMR · AWS
-              CloudWatch · Jupyter Notebooks · Amazon SageMaker · AWS Lambda ·
-              AWS X-Ray · AWS CloudFormation · AWS CDK · AWS Step Functions ·
-              AWS IAM
-            </p>
-          </article>
-
-          <article
-            class="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
-          >
-            <header class="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <h3
-                  class="text-xl font-semibold text-slate-900 dark:text-white"
-                >
-                  State Street · Data Engineer
-                </h3>
-                <p class="text-sm text-primary-light dark:text-primary-dark">
-                  April 2021 – December 2023 · Texas, USA
-                </p>
-              </div>
-              <div
-                class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-              >
-                Azure Platform
-              </div>
-            </header>
-            <ul
-              class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200"
-            >
-              <li>
-                Optimized Azure Synapse analytics workloads with robust data
-                models, monitoring, and query tuning.
-              </li>
-              <li>
-                Automated infrastructure via PowerShell, Azure CLI, and
-                Terraform to scale data services across regions.
-              </li>
-              <li>
-                Delivered low-latency applications with Azure Cosmos DB and
-                streaming ingestion via Apache Kafka.
-              </li>
-              <li>
-                Developed automated ETL pipelines in Azure Data Factory and
-                orchestrated transformations with PySpark, Pandas, and NumPy.
-              </li>
-              <li>
-                Created interactive Power BI dashboards and enforced governance
-                with Azure Purview and Key Vault.
-              </li>
-              <li>
-                Managed CI/CD through Azure DevOps and BitBucket, ensuring
-                reliable deployments of data solutions.
-              </li>
-              <li>
-                Leveraged Azure Databricks, HDInsight, and AKS for collaborative
-                analytics and containerized workflows.
-              </li>
-              <li>
-                Implemented observability with the ELK Stack and structured
-                storage via ADLS, Blob Storage, and SQL Server.
-              </li>
-            </ul>
-            <p
-              class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-            >
-              Environment
-            </p>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              Azure Synapse Analytics · PowerShell · Azure CLI · Azure Cosmos DB
-              · Power BI · Apache Spark · Azure HDInsight · Python · Pandas ·
-              NumPy · PySpark · Apache Kafka · Azure Machine Learning · Azure
-              Data Factory · ADLS · Azure Key Vault · Azure Purview · Azure
-              DevOps · BitBucket · T-SQL · SQL Server · Azure Blob Storage ·
-              Azure Databricks · ELK Stack · Terraform · Azure Kubernetes
-              Service
-            </p>
-          </article>
-
-          <article
-            class="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
-          >
-            <header class="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <h3
-                  class="text-xl font-semibold text-slate-900 dark:text-white"
-                >
-                  Target · Data Engineer
-                </h3>
-                <p class="text-sm text-primary-light dark:text-primary-dark">
-                  September 2019 – March 2021 · California, USA
-                </p>
-              </div>
-              <div
-                class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-              >
-                AWS Analytics
-              </div>
-            </header>
-            <ul
-              class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200"
-            >
-              <li>
-                Administered Amazon RDS and DynamoDB clusters achieving 99.99%
-                uptime for hybrid workloads.
-              </li>
-              <li>
-                Built petabyte-scale ETL frameworks via AWS Glue and PySpark,
-                reducing ingestion SLAs.
-              </li>
-              <li>
-                Delivered distributed processing on Amazon EMR and real-time
-                streaming with AWS Kinesis.
-              </li>
-              <li>
-                Optimized Amazon Redshift storage and query strategies,
-                integrating QuickSight dashboards.
-              </li>
-              <li>
-                Strengthened governance with AWS Lake Formation and IAM-based
-                least-privilege controls.
-              </li>
-              <li>
-                Automated infrastructure with AWS CloudFormation, CDK, and CI/CD
-                pipelines through Jenkins.
-              </li>
-              <li>
-                Executed on-premises to AWS migrations, ensuring compliance,
-                security, and minimal downtime.
-              </li>
-              <li>
-                Integrated SageMaker models into analytics pipelines and
-                instrumented observability using CloudWatch and X-Ray.
-              </li>
-            </ul>
-            <p
-              class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-            >
-              Environment
-            </p>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              AWS · Amazon RDS · DynamoDB · AWS Glue · PySpark · Apache Spark ·
-              Amazon EMR · AWS Kinesis · Amazon Redshift · AWS Lake Formation ·
-              AWS Lambda · AWS Step Functions · AWS CloudFormation · AWS CDK ·
-              Jenkins · Amazon QuickSight · AWS Data Pipeline · AWS IAM · AWS
-              CloudWatch · AWS X-Ray · Hive · Amazon S3 · AWS Glue Data Catalog
-              · Amazon SageMaker · Git · JIRA
-            </p>
-          </article>
-
-          <article
-            class="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
-          >
-            <header class="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <h3
-                  class="text-xl font-semibold text-slate-900 dark:text-white"
-                >
-                  Unified Healthcare Group · Data Engineer
-                </h3>
-                <p class="text-sm text-primary-light dark:text-primary-dark">
-                  May 2017 – August 2019 · Minnesota, USA
-                </p>
-              </div>
-              <div
-                class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-              >
-                Hybrid Cloud
-              </div>
-            </header>
-            <ul
-              class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200"
-            >
-              <li>
-                Designed ETL pipelines funneling heterogeneous data into
-                Snowflake and AWS-based data lakes.
-              </li>
-              <li>
-                Integrated Talend, Apache Spark, and PySpark to deliver scalable
-                batch transformations.
-              </li>
-              <li>
-                Implemented Kafka streaming for real-time ingestion and
-                predictive analytics readiness.
-              </li>
-              <li>
-                Employed MySQL, MongoDB, and SQL optimizations to ensure data
-                quality and accessibility.
-              </li>
-              <li>
-                Embedded Scikit-Learn models within data pipelines to support
-                forecasting and insights.
-              </li>
-              <li>
-                Managed Hadoop ecosystems (HDFS, MapReduce, Hive, Pig) for
-                large-scale processing.
-              </li>
-              <li>
-                Curated analytics artifacts in Jupyter Notebooks and maintained
-                version control with Git.
-              </li>
-            </ul>
-            <p
-              class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-            >
-              Environment
-            </p>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              Snowflake · AWS S3 · EC2 · Redshift · Talend · Apache Spark ·
-              PySpark · Apache Kafka · MySQL · MongoDB · Scikit-Learn · Apache
-              Hadoop · HDFS · MapReduce · Hive · Pig · Python · Pandas · NumPy ·
-              Jupyter Notebooks · Git
-            </p>
-          </article>
-
-          <article
-            class="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-card dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
-          >
-            <header class="flex flex-wrap items-baseline justify-between gap-4">
-              <div>
-                <h3
-                  class="text-xl font-semibold text-slate-900 dark:text-white"
-                >
-                  Sequent Global Technologies Inc · Jr. Data Engineer
-                </h3>
-                <p class="text-sm text-primary-light dark:text-primary-dark">
-                  June 2014 – December 2015 · Hyderabad, India
-                </p>
-              </div>
-              <div
-                class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-              >
-                Foundational Data Ops
-              </div>
-            </header>
-            <ul
-              class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200"
-            >
-              <li>
-                Built ETL pipelines across PostgreSQL, Redshift, and AWS RDS
-                ensuring data reliability and consistency.
-              </li>
-              <li>
-                Authored advanced SQL queries and Python scripts using Pandas
-                and NumPy for data wrangling.
-              </li>
-              <li>
-                Produced interactive Excel-based dashboards leveraging
-                PivotTables, VLOOKUP, and analysis toolkits.
-              </li>
-              <li>
-                Managed data ingestion via AWS S3 and documented workflows in
-                Jupyter Notebooks.
-              </li>
-              <li>
-                Implemented Agile practices, collaborating across teams and
-                controlling versions with Git.
-              </li>
-              <li>
-                Delivered statistical analyses and imputations to maintain data
-                completeness and accuracy.
-              </li>
-            </ul>
-            <p
-              class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400"
-            >
-              Environment
-            </p>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              PostgreSQL · Redshift · AWS RDS · SQL · Pandas · NumPy · Excel ·
-              PivotTables · VLOOKUP · Data Analysis Toolpak · AWS S3 · Jupyter
-              Notebooks · Git · Agile · Scrum
-            </p>
-          </article>
         </div>
-      </section>
-
-      <section
-        class="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-white to-primary-light/10 p-8 shadow-lg shadow-slate-900/10 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-primary-dark/10 dark:shadow-card"
-      >
-        <div class="flex flex-wrap items-center justify-between gap-6">
-          <div>
-            <h2
-              class="text-2xl font-heading font-semibold text-slate-900 dark:text-white"
+        <main id="content-start" class="relative mx-auto max-w-6xl space-y-16 px-6 pb-24">
+            <div
+                class="parallax-layer -z-10 bg-[radial-gradient(circle_at_bottom,_rgba(37,99,235,0.12),_transparent_60%)] dark:bg-[radial-gradient(circle_at_bottom,_rgba(96,165,250,0.08),_transparent_60%)]"
+                data-parallax="-0.04"
+            ></div>
+            <section class="grid gap-8 lg:grid-cols-[2fr,1fr] items-start" data-reveal>
+                <article
+                    class="card-animate rounded-3xl border border-slate-200/70 bg-white/90 backdrop-blur-lg p-8 shadow-lg shadow-slate-900/5 dark:border-slate-800/60 dark:bg-slate-900/70 dark:shadow-card"
+                    data-reveal
+                >
+                    <h2 class="mb-6 text-2xl font-heading font-semibold text-slate-900 dark:text-white">
+                        Professional Summary
+                    </h2>
+                    <div class="prose prose-slate max-w-none dark:prose-invert">
+                        <p>
+                            Senior Data Engineer with 9+ years architecting and optimizing cloud-scale data platforms across Azure, AWS, and Google Cloud. Expert in building resilient ETL and streaming pipelines with Apache Spark, Kafka, Talend, Informatica, and modern orchestration frameworks.
+                        </p>
+                        <p>
+                            Versed in Java, Python, SQL, and PowerShell to automate end-to-end data workflows, including real-time ingestion via Kafka, Pub/Sub, and Kinesis. Adept at cross-cloud integration of AWS Glue, Azure Data Factory, and Google Cloud Composer while enforcing governance with AWS IAM, Azure Purview, and OAuth 2.0.
+                        </p>
+                        <p>
+                            Recognized for improving pipeline performance by up to 40%, designing petabyte-scale ecosystems, and enabling ML-ready data products integrated with Amazon SageMaker, Azure Machine Learning, and TensorFlow. Collaborative leader who closes the gap between data engineering, analytics, and business stakeholders.
+                        </p>
+                    </div>
+                </article>
+                <aside class="space-y-4">
+                    <div
+                        class="card-animate rounded-3xl border border-primary-light/20 bg-white/90 p-6 shadow-lg shadow-primary-light/15 transition dark:border-primary-dark/20 dark:bg-slate-900/70 dark:shadow-card"
+                        data-reveal
+                    >
+                        <p class="mb-3 text-sm uppercase tracking-[0.35em] text-primary-light dark:text-primary-dark">
+                            Contact
+                        </p>
+                        <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <p class="font-semibold text-slate-800 dark:text-white">
+                                reddyvinesh1993@gmail.com
+                            </p>
+                            <p>+1 (214) 310-0063</p>
+                            <a
+                                class="text-primary-light hover:underline dark:text-primary-dark"
+                                href="https://www.linkedin.com/in/rvineshreddy"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                linkedin.com/in/rvineshreddy
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card"
+                        data-reveal
+                    >
+                        <p class="mb-3 text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                            Core Outcomes
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"></span>
+                                <span>Reduced pipeline runtimes up to 40% through Spark optimization and resource tuning.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"></span>
+                                <span>Delivered real-time analytics with event-driven architectures leveraging Kinesis and Kafka.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary-light dark:bg-primary-dark"></span>
+                                <span>Enabled ML-ready datasets powering predictive models across cloud ML platforms.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </section>
+            <section class="space-y-10" data-reveal>
+                <div class="flex items-center gap-3">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v12m6-6H6" />
+                        </svg>
+                    </span>
+                    <h2 class="text-2xl font-heading font-semibold text-slate-900 dark:text-white">
+                        Highlighted Capabilities
+                    </h2>
+                </div>
+                <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    <div
+                        class="card-animate group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
+                        data-reveal
+                    >
+                        <h3 class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7.5h18m-18 9h18M4.5 4.5l1.125 15m12.75-15 1.125 15M9 4.5v15m6-15v15" />
+                                </svg>
+                            </span>
+                            Multi-Cloud Architecture
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                            Hands-on delivery across Azure, AWS, and GCP with infrastructure as code, CI/CD, and cost-optimized deployments tailored to enterprise governance.
+                        </p>
+                    </div>
+                    <div
+                        class="card-animate group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
+                        data-reveal
+                    >
+                        <h3 class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m0 0 6-6m-6 6-6-6" />
+                                </svg>
+                            </span>
+                            Streaming & Real-Time Analytics
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                            Event-driven pipelines with Kafka, Kinesis, and Pub/Sub enabling sub-minute insights, anomaly detection, and operational dashboards.
+                        </p>
+                    </div>
+                    <div
+                        class="card-animate group rounded-3xl border border-slate-200 bg-gradient-to-br from-white/80 via-white/50 to-primary-light/5 p-6 shadow-lg dark:border-slate-800 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-primary-dark/5"
+                        data-reveal
+                    >
+                        <h3 class="flex items-center gap-3 text-lg font-semibold text-slate-900 dark:text-white">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 16.5V18a3 3 0 0 1-6 0v-1.5m0-9V6a3 3 0 0 1 6 0v1.5m-9 3h12" />
+                                </svg>
+                            </span>
+                            Data Governance & Security
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                            Compliant frameworks combining Lake Formation, Purview, IAM, and Key Vault to uphold data privacy, lineage, and least-privilege access.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="space-y-8" id="skills" data-reveal>
+                <div class="flex items-center gap-3">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v12m6-6H6" />
+                        </svg>
+                    </span>
+                    <h2 class="text-2xl font-heading font-semibold text-slate-900 dark:text-white">
+                        Technical Toolkit
+                    </h2>
+                </div>
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <div class="card-animate rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card" data-reveal>
+                        <div class="flex items-center gap-4">
+                            <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 9.75V7.5a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v2.25M12 3v18m-7.5-5.25V16.5a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v.75" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                                    Cloud Platforms
+                                </h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">
+                                    Azure, AWS, Google Cloud
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="skill-chip">ADLS</span>
+                            <span class="skill-chip">Synapse Analytics</span>
+                            <span class="skill-chip">Databricks</span>
+                            <span class="skill-chip">Cosmos DB</span>
+                            <span class="skill-chip">ADF</span>
+                            <span class="skill-chip">Purview</span>
+                            <span class="skill-chip">AWS Glue</span>
+                            <span class="skill-chip">Lambda</span>
+                            <span class="skill-chip">Redshift</span>
+                            <span class="skill-chip">DynamoDB</span>
+                            <span class="skill-chip">S3</span>
+                            <span class="skill-chip">Athena</span>
+                            <span class="skill-chip">CloudFormation</span>
+                            <span class="skill-chip">Kinesis</span>
+                            <span class="skill-chip">EMR</span>
+                            <span class="skill-chip">BigQuery</span>
+                            <span class="skill-chip">Cloud Functions</span>
+                            <span class="skill-chip">Cloud Dataflow</span>
+                            <span class="skill-chip">Cloud Pub/Sub</span>
+                        </div>
+                    </div>
+                    <div class="card-animate rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card" data-reveal>
+                        <div class="flex items-center gap-4">
+                            <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                                    Programming & Analytics
+                                </h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">
+                                    Languages, Libraries, Statistics
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="skill-chip">Java</span>
+                            <span class="skill-chip">Python</span>
+                            <span class="skill-chip">PowerShell</span>
+                            <span class="skill-chip">SQL</span>
+                            <span class="skill-chip">Pandas</span>
+                            <span class="skill-chip">NumPy</span>
+                            <span class="skill-chip">TensorFlow</span>
+                            <span class="skill-chip">Scikit-Learn</span>
+                            <span class="skill-chip">Seaborn</span>
+                            <span class="skill-chip">Regression Analysis</span>
+                            <span class="skill-chip">Hypothesis Testing</span>
+                        </div>
+                    </div>
+                    <div class="card-animate rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card" data-reveal>
+                        <div class="flex items-center gap-4">
+                            <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m-7.5 4.5h9A1.5 1.5 0 0 0 18 19.5v-15A1.5 1.5 0 0 0 16.5 3h-9A1.5 1.5 0 0 0 6 4.5v15A1.5 1.5 0 0 0 7.5 21.5Z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                                    Data Ecosystems
+                                </h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">
+                                    Databases, ETL, Warehousing
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="skill-chip">SQL Server</span>
+                            <span class="skill-chip">MySQL</span>
+                            <span class="skill-chip">PostgreSQL</span>
+                            <span class="skill-chip">MongoDB</span>
+                            <span class="skill-chip">CosmosDB</span>
+                            <span class="skill-chip">DynamoDB</span>
+                            <span class="skill-chip">Kafka</span>
+                            <span class="skill-chip">Airflow</span>
+                            <span class="skill-chip">Beam</span>
+                            <span class="skill-chip">Hadoop</span>
+                            <span class="skill-chip">Talend</span>
+                            <span class="skill-chip">Informatica</span>
+                            <span class="skill-chip">Hive</span>
+                            <span class="skill-chip">Pig</span>
+                            <span class="skill-chip">Google BigQuery</span>
+                            <span class="skill-chip">Amazon Redshift</span>
+                            <span class="skill-chip">Azure Synapse</span>
+                            <span class="skill-chip">Snowflake</span>
+                            <span class="skill-chip">Star Schema</span>
+                            <span class="skill-chip">Snowflake Schema</span>
+                        </div>
+                    </div>
+                    <div class="card-animate rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-card" data-reveal>
+                        <div class="flex items-center gap-4">
+                            <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 8.25h15m-13.5 0a1.5 1.5 0 0 1-1.5-1.5V5.25A1.5 1.5 0 0 1 6 3.75h12a1.5 1.5 0 0 1 1.5 1.5v1.5a1.5 1.5 0 0 1-1.5 1.5m-13.5 0h13.5m-13.5 0v9a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5v-9" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                                    Delivery & Operations
+                                </h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">
+                                    DevOps, Monitoring, Collaboration
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="skill-chip">Agile</span>
+                            <span class="skill-chip">Scrum</span>
+                            <span class="skill-chip">Kanban</span>
+                            <span class="skill-chip">Git</span>
+                            <span class="skill-chip">GitHub</span>
+                            <span class="skill-chip">BitBucket</span>
+                            <span class="skill-chip">JIRA</span>
+                            <span class="skill-chip">Confluence</span>
+                            <span class="skill-chip">Azure DevOps</span>
+                            <span class="skill-chip">Jenkins</span>
+                            <span class="skill-chip">Terraform</span>
+                            <span class="skill-chip">Docker</span>
+                            <span class="skill-chip">Kubernetes</span>
+                            <span class="skill-chip">AWS CloudWatch</span>
+                            <span class="skill-chip">AWS X-Ray</span>
+                            <span class="skill-chip">ELK Stack</span>
+                            <span class="skill-chip">Azure Key Vault</span>
+                            <span class="skill-chip">AWS IAM</span>
+                            <span class="skill-chip">OAuth 2.0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="space-y-10" id="experience" data-reveal>
+                <div class="flex items-center gap-3">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-light/15 text-primary-light dark:bg-primary-dark/15 dark:text-primary-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.25 7.5h13.5M6 12h12m-10.5 4.5h9" />
+                        </svg>
+                    </span>
+                    <h2 class="text-2xl font-heading font-semibold text-slate-900 dark:text-white">
+                        Experience
+                    </h2>
+                </div>
+                <div class="grid gap-8">
+                    <article
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
+                        data-reveal
+                    >
+                        <header class="flex flex-wrap items-baseline justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+                                    <span class="text-sky-500 dark:text-sky-400">American Express</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · Sr. Data Engineer</span>
+                                </h3>
+                                <p class="text-sm text-primary-light dark:text-primary-dark">
+                                    January 2024 – Present · Texas, USA
+                                </p>
+                            </div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                                AWS Ecosystem
+                            </div>
+                        </header>
+                        <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+                            <li>Architected Amazon RDS and DynamoDB deployments supporting high-availability transactional and analytical workloads.</li>
+                            <li>Leveraged Apache Spark and PySpark for distributed data processing and real-time analytics on petabyte-scale datasets.</li>
+                            <li>Engineered AWS Glue ETL pipelines, automated orchestration with AWS Data Pipeline, and tuned Spark SQL for cost-efficient performance.</li>
+                            <li>Implemented streaming analytics via AWS Kinesis and built event-driven workflows with Lambda and Step Functions.</li>
+                            <li>Optimized Amazon Redshift warehousing through indexing, partitioning, compression, and workload management.</li>
+                            <li>Delivered governance with AWS Lake Formation, IAM policy design, and cross-platform security compliance.</li>
+                            <li>Produced Amazon QuickSight dashboards for business stakeholders and managed EMR clusters for large-scale analytics.</li>
+                            <li>Enabled ML pipelines using Amazon SageMaker and enforced observability with AWS CloudWatch and X-Ray.</li>
+                            <li>Automated infrastructure provisioning via AWS CloudFormation and CDK, integrating CI/CD with Jenkins.</li>
+                            <li>Led cloud migration initiatives from on-premises sources to AWS, ensuring secure data transfer and minimal downtime.</li>
+                        </ul>
+                        <p class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                            Environment
+                        </p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                            AWS · Amazon RDS · DynamoDB · Apache Spark · PySpark · AWS Glue · AWS Kinesis · Jenkins · AWS Data Pipeline · Amazon Redshift · Amazon QuickSight · AWS Lake Formation · Amazon EMR · AWS CloudWatch · Jupyter Notebooks · Amazon SageMaker · AWS Lambda · AWS X-Ray · AWS CloudFormation · AWS CDK · AWS Step Functions · AWS IAM
+                        </p>
+                    </article>
+                    <article
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
+                        data-reveal
+                    >
+                        <header class="flex flex-wrap items-baseline justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+                                    <span class="text-amber-500 dark:text-amber-300">State Street</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · Data Engineer</span>
+                                </h3>
+                                <p class="text-sm text-primary-light dark:text-primary-dark">
+                                    April 2021 – December 2023 · Texas, USA
+                                </p>
+                            </div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                                Azure Platform
+                            </div>
+                        </header>
+                        <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+                            <li>Optimized Azure Synapse analytics workloads with robust data models, monitoring, and query tuning.</li>
+                            <li>Automated infrastructure via PowerShell, Azure CLI, and Terraform to scale data services across regions.</li>
+                            <li>Delivered low-latency applications with Azure Cosmos DB and streaming ingestion via Apache Kafka.</li>
+                            <li>Developed automated ETL pipelines in Azure Data Factory and orchestrated transformations with PySpark, Pandas, and NumPy.</li>
+                            <li>Created interactive Power BI dashboards and enforced governance with Azure Purview and Key Vault.</li>
+                            <li>Managed CI/CD through Azure DevOps and BitBucket, ensuring reliable deployments of data solutions.</li>
+                            <li>Leveraged Azure Databricks, HDInsight, and AKS for collaborative analytics and containerized workflows.</li>
+                            <li>Implemented observability with the ELK Stack and structured storage via ADLS, Blob Storage, and SQL Server.</li>
+                        </ul>
+                        <p class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                            Environment
+                        </p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                            Azure Synapse Analytics · PowerShell · Azure CLI · Azure Cosmos DB · Power BI · Apache Spark · Azure HDInsight · Python · Pandas · NumPy · PySpark · Apache Kafka · Azure Machine Learning · Azure Data Factory · ADLS · Azure Key Vault · Azure Purview · Azure DevOps · BitBucket · T-SQL · SQL Server · Azure Blob Storage · Azure Databricks · ELK Stack · Terraform · Azure Kubernetes Service
+                        </p>
+                    </article>
+                    <article
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
+                        data-reveal
+                    >
+                        <header class="flex flex-wrap items-baseline justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+                                    <span class="text-emerald-500 dark:text-emerald-300">Target</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · Data Engineer</span>
+                                </h3>
+                                <p class="text-sm text-primary-light dark:text-primary-dark">
+                                    September 2019 – March 2021 · California, USA
+                                </p>
+                            </div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                                AWS Analytics
+                            </div>
+                        </header>
+                        <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+                            <li>Administered Amazon RDS and DynamoDB clusters achieving 99.99% uptime for hybrid workloads.</li>
+                            <li>Built petabyte-scale ETL frameworks via AWS Glue and PySpark, reducing ingestion SLAs.</li>
+                            <li>Delivered distributed processing on Amazon EMR and real-time streaming with AWS Kinesis.</li>
+                            <li>Optimized Amazon Redshift storage and query strategies, integrating QuickSight dashboards.</li>
+                            <li>Strengthened governance with AWS Lake Formation and IAM-based least-privilege controls.</li>
+                            <li>Automated infrastructure with AWS CloudFormation, CDK, and CI/CD pipelines through Jenkins.</li>
+                            <li>Executed on-premises to AWS migrations, ensuring compliance, security, and minimal downtime.</li>
+                            <li>Integrated SageMaker models into analytics pipelines and instrumented observability using CloudWatch and X-Ray.</li>
+                        </ul>
+                        <p class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                            Environment
+                        </p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                            AWS · Amazon RDS · DynamoDB · AWS Glue · PySpark · Apache Spark · Amazon EMR · AWS Kinesis · Amazon Redshift · AWS Lake Formation · AWS Lambda · AWS Step Functions · AWS CloudFormation · AWS CDK · Jenkins · Amazon QuickSight · AWS Data Pipeline · AWS IAM · AWS CloudWatch · AWS X-Ray · Hive · Amazon S3 · AWS Glue Data Catalog · Amazon SageMaker · Git · JIRA
+                        </p>
+                    </article>
+                    <article
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
+                        data-reveal
+                    >
+                        <header class="flex flex-wrap items-baseline justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+                                    <span class="text-purple-500 dark:text-purple-300">Unified Healthcare Group</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · Data Engineer</span>
+                                </h3>
+                                <p class="text-sm text-primary-light dark:text-primary-dark">
+                                    May 2017 – August 2019 · Minnesota, USA
+                                </p>
+                            </div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                                Hybrid Cloud
+                            </div>
+                        </header>
+                        <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+                            <li>Designed ETL pipelines funneling heterogeneous data into Snowflake and AWS-based data lakes.</li>
+                            <li>Integrated Talend, Apache Spark, and PySpark to deliver scalable batch transformations.</li>
+                            <li>Implemented Kafka streaming for real-time ingestion and predictive analytics readiness.</li>
+                            <li>Employed MySQL, MongoDB, and SQL optimizations to ensure data quality and accessibility.</li>
+                            <li>Embedded Scikit-Learn models within data pipelines to support forecasting and insights.</li>
+                            <li>Managed Hadoop ecosystems (HDFS, MapReduce, Hive, Pig) for large-scale processing.</li>
+                            <li>Curated analytics artifacts in Jupyter Notebooks and maintained version control with Git.</li>
+                        </ul>
+                        <p class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                            Environment
+                        </p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                            Snowflake · AWS S3 · EC2 · Redshift · Talend · Apache Spark · PySpark · Apache Kafka · MySQL · MongoDB · Scikit-Learn · Apache Hadoop · HDFS · MapReduce · Hive · Pig · Python · Pandas · NumPy · Jupyter Notebooks · Git
+                        </p>
+                    </article>
+                    <article
+                        class="card-animate rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg shadow-slate-900/5 transition dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-card"
+                        data-reveal
+                    >
+                        <header class="flex flex-wrap items-baseline justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+                                    <span class="text-rose-500 dark:text-rose-300">Sequent Global Technologies Inc</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · Jr. Data Engineer</span>
+                                </h3>
+                                <p class="text-sm text-primary-light dark:text-primary-dark">
+                                    June 2014 – December 2015 · Hyderabad, India
+                                </p>
+                            </div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                                Foundational Data Ops
+                            </div>
+                        </header>
+                        <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+                            <li>Built ETL pipelines across PostgreSQL, Redshift, and AWS RDS ensuring data reliability and consistency.</li>
+                            <li>Authored advanced SQL queries and Python scripts using Pandas and NumPy for data wrangling.</li>
+                            <li>Produced interactive Excel-based dashboards leveraging PivotTables, VLOOKUP, and analysis toolkits.</li>
+                            <li>Managed data ingestion via AWS S3 and documented workflows in Jupyter Notebooks.</li>
+                            <li>Implemented Agile practices, collaborating across teams and controlling versions with Git.</li>
+                            <li>Delivered statistical analyses and imputations to maintain data completeness and accuracy.</li>
+                        </ul>
+                        <p class="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                            Environment
+                        </p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                            PostgreSQL · Redshift · AWS RDS · SQL · Pandas · NumPy · Excel · PivotTables · VLOOKUP · Data Analysis Toolpak · AWS S3 · Jupyter Notebooks · Git · Agile · Scrum
+                        </p>
+                    </article>
+                </div>
+            </section>
+            <section
+                class="card-animate rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-white to-primary-light/10 p-8 shadow-lg shadow-slate-900/10 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-primary-dark/10 dark:shadow-card"
+                data-reveal
             >
-              Let’s build your next data platform.
-            </h2>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-              Available for senior data engineering engagements, multi-cloud
-              architecture leadership, and real-time analytics initiatives.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="mailto:reddyvinesh1993@gmail.com"
-              class="inline-flex items-center gap-2 rounded-full bg-primary-light px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-light/40 transition hover:bg-indigo-500 dark:bg-primary-dark dark:hover:bg-blue-400"
-            >
-              <span>Contact via Email</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/rvineshreddy"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-primary-light hover:text-primary-light dark:border-slate-800 dark:text-slate-200 dark:hover:border-primary-dark dark:hover:text-primary-dark"
-            >
-              <span>Connect on LinkedIn</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
+                <div class="flex flex-wrap items-center justify-between gap-6">
+                    <div>
+                        <h2 class="text-2xl font-heading font-semibold text-slate-900 dark:text-white">
+                            Let’s build your next data platform.
+                        </h2>
+                        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                            Available for senior data engineering engagements, multi-cloud architecture leadership, and real-time analytics initiatives.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a
+                            href="mailto:reddyvinesh1993@gmail.com"
+                            class="inline-flex items-center gap-2 rounded-full bg-primary-light px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-light/40 transition hover:bg-indigo-500 dark:bg-primary-dark dark:hover:bg-blue-400"
+                        >
+                            <span>Contact via Email</span>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/rvineshreddy"
+                            target="_blank"
+                            rel="noreferrer"
+                            class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-primary-light hover:text-primary-light dark:border-slate-800 dark:text-slate-200 dark:hover:border-primary-dark dark:hover:text-primary-dark"
+                        >
+                            <span>Connect on LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="border-t border-slate-200/70 bg-white/80 py-8 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950/80 dark:text-slate-400">
+            © <span id="year"></span> Vinesh Reddy Borra.
+            <br />
+            Last Updated: November, 2025.
+        </footer>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
 
-    <footer
-      class="border-t border-slate-200/70 bg-white/80 py-8 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950/80 dark:text-slate-400"
-    >
-      © <span id="year"></span> Vinesh Reddy Borra. <br />
-      Last Updated: November, 2025.
-    </footer>
+            const typingElement = document.getElementById("typing-text");
+            const cursorElement = document.getElementById("typing-cursor");
+            const professions = [
+                { label: "Senior Data Engineer", color: "#2563EB" },
+                { label: "Front Developer", color: "#F59E0B" },
+                { label: "Backend Developer", color: "#22C55E" }
+            ];
+            if (typingElement && cursorElement) {
+                let textIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+                const type = () => {
+                    const current = professions[textIndex];
+                    typingElement.style.color = current.color;
+                    cursorElement.style.backgroundColor = current.color;
+
+                    if (!isDeleting) {
+                        typingElement.textContent = current.label.substring(0, charIndex + 1);
+                        charIndex += 1;
+                        if (charIndex === current.label.length) {
+                            isDeleting = true;
+                            setTimeout(type, 1200);
+                            return;
+                        }
+                    } else {
+                        typingElement.textContent = current.label.substring(0, charIndex - 1);
+                        charIndex -= 1;
+                        if (charIndex === 0) {
+                            isDeleting = false;
+                            textIndex = (textIndex + 1) % professions.length;
+                        }
+                    }
+
+                    const delay = isDeleting ? 70 : 110;
+                    setTimeout(type, delay);
+                };
+
+                setTimeout(type, 600);
+            }
+
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const revealNodes = document.querySelectorAll("[data-reveal]");
+            if (!prefersReducedMotion && revealNodes.length) {
+                revealNodes.forEach((node) => {
+                    node.classList.add("reveal-init");
+                });
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("reveal-active");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.18,
+                        rootMargin: "0px 0px -48px 0px"
+                    }
+                );
+                revealNodes.forEach((node) => observer.observe(node));
+            } else {
+                revealNodes.forEach((node) => node.classList.add("reveal-active"));
+            }
+
+            const parallaxNodes = document.querySelectorAll("[data-parallax]");
+            if (parallaxNodes.length) {
+                parallaxNodes.forEach((node) => {
+                    node.dataset.baseOffset = node.getBoundingClientRect().top + window.scrollY;
+                });
+                const updateParallax = () => {
+                    const scrollPosition = window.scrollY;
+                    parallaxNodes.forEach((node) => {
+                        const speed = parseFloat(node.dataset.parallax) || 0.12;
+                        const base = parseFloat(node.dataset.baseOffset) || 0;
+                        const translate = (scrollPosition - base) * speed;
+                        node.style.transform = `translate3d(0, ${translate}px, 0)`;
+                        const blurAmount = Math.min(18, Math.abs(translate) * 0.15);
+                        node.style.filter = `blur(${blurAmount.toFixed(2)}px)`;
+                    });
+                };
+                updateParallax();
+                window.addEventListener("scroll", updateParallax, { passive: true });
+                window.addEventListener("resize", () => {
+                    parallaxNodes.forEach((node) => {
+                        node.dataset.baseOffset = node.getBoundingClientRect().top + window.scrollY;
+                    });
+                    updateParallax();
+                });
+            }
+        </script>
+    </body>
 </html>
